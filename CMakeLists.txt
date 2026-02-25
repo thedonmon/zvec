@@ -28,9 +28,15 @@ message(STATUS "BUILD_PYTHON_BINDINGS:${BUILD_PYTHON_BINDINGS}")
 option(BUILD_TOOLS "Build tools" ON)
 message(STATUS "BUILD_TOOLS:${BUILD_TOOLS}")
 
+option(BUILD_EXAMPLES "Build examples" ON)
+message(STATUS "BUILD_EXAMPLES:${BUILD_EXAMPLES}")
+
 cc_directory(thirdparty)
 cc_directories(src)
 cc_directories(tests)
+if(BUILD_EXAMPLES)
+    cc_directories(examples)
+endif()
 
 if(BUILD_TOOLS)
     cc_directories(tools)
